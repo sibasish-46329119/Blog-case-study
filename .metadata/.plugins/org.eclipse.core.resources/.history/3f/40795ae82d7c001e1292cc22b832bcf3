@@ -1,0 +1,5 @@
+package com.blogappspringboot.blog.payload;
+
+public class ApiResponse {
+
+}

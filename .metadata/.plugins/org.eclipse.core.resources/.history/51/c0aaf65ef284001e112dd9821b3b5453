@@ -1,0 +1,5 @@
+package com.blogappspringboot.blog.entities;
+
+public class Post {
+
+}

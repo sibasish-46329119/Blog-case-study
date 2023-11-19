@@ -1,5 +1,0 @@
-package com.blogappspringboot.blog.service;
-
-public interface CategoryService {
-
-}

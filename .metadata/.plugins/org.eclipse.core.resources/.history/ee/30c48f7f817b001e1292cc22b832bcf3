@@ -1,5 +1,0 @@
-package com.blogappspringboot.blogt.exceptions;
-
-public class ResourceNotFoundException {
-
-}

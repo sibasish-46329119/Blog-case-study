@@ -1,5 +1,0 @@
-package com.blogappspringboot.blog.repository;
-
-public interface CategoryRepo {
-
-}

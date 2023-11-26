@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.blogappspringboot.blog.config.AppConstants;
 import com.blogappspringboot.blog.payload.ApiResponse;
 import com.blogappspringboot.blog.payload.PostDto;
+import com.blogappspringboot.blog.payload.PostResponse;
 import com.blogappspringboot.blog.service.PostService;
 
 @RestController
@@ -48,11 +50,13 @@ public class PostController {
 	}
 	
 	@GetMapping("/posts")
-	public ResponseEntity<List<PostDto>> getAllPost(
-			@RequestParam(value = "pageNumber", defaultValue = "0", required=false)Integer pageNumber,
-			@RequestParam(value = "pageSize", defaultValue = "5", required = false)Integer pageSize){
-		List<PostDto> allPost = this.postService.getAllPosts(pageNumber, pageSize);
-		return new ResponseEntity<List<PostDto>>(allPost, HttpStatus.OK);
+	public ResponseEntity<PostResponse> getAllPost(
+			@RequestParam(value = "pageNumber", defaultValue = AppConstants.PAGE_NUMBER, required=false)Integer pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = AppConstants.PAGE_SIZE, required=false)Integer pageSize,
+			@RequestParam(value = "sortBy", defaultValue = AppConstants.SORT_BY, required=false)String sortBy,
+			@RequestParam(value = "sortDir", defaultValue=AppConstants.SORT_DIR, required=false) String sortDir){
+		PostResponse allPost = this.postService.getAllPosts(pageNumber, pageSize, sortBy, sortDir);
+		return new ResponseEntity<PostResponse>(allPost, HttpStatus.OK);
 	}
 	
 	@GetMapping("/posts/{postId}")
@@ -73,5 +77,10 @@ public class PostController {
 		PostDto updatedPost = this.postService.updatePost(postDto, postId);
 		return new ResponseEntity<PostDto>(updatedPost, HttpStatus.OK);
 		
+	}
+	@GetMapping("/posts/search/{keywords}")
+	public ResponseEntity<List<PostDto>>searchPostByTitle(@PathVariable String keywords){
+		List<PostDto> result = this.postService.searchPosts(keywords);
+		return new ResponseEntity<List<PostDto>>(result, HttpStatus.OK);
 	}
 }

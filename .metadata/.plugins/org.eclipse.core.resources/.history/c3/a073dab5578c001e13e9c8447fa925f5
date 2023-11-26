@@ -1,0 +1,5 @@
+package com.blogappspringboot.blog.config;
+
+public class AppConstants {
+
+}

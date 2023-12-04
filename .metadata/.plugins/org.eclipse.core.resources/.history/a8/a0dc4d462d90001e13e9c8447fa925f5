@@ -11,6 +11,7 @@ import com.blogappspringboot.blog.exceptions.ResourceNotFoundException;
 import com.blogappspringboot.blog.payload.CommentDto;
 import com.blogappspringboot.blog.repository.CommentRepo;
 import com.blogappspringboot.blog.repository.PostRepo;
+import com.blogappspringboot.blog.repository.UserRepo;
 import com.blogappspringboot.blog.service.CommentService;
 
 @Service

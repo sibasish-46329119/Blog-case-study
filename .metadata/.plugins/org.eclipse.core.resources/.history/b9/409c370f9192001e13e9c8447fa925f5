@@ -17,11 +17,3 @@ spring.servlet.multipart.max-file-size = 10MB
 spring.servlet.multipart.max-request-size = 10MB
 
 project.image =images/
-
-
-logging.level.org.springframework.security=DEBUG
-
-
-spring.security.user.name=sibasish
-spring.security.user.password=sibasish
-spring.security.user.roles=ADMIN
